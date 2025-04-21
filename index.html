@@ -1,59 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <!-- Metadados Essenciais -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Para compatibilidade com versões legadas do IE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título da Página -->
-    <title>Desbloqueador de PDF Online e Seguro</title>
-
-    <!-- SEO e Descrição -->
-    <meta name="description" content="Desbloqueie arquivos PDF protegidos por senha diretamente no seu navegador. Ferramenta online, segura e gratuita que não envia seus arquivos para servidores.">
-    <meta name="keywords" content="desbloquear pdf, remover senha pdf, pdf online, pdf seguro, javascript, pdf-lib, github pages">
-    <!-- <meta name="author" content="Seu Nome ou Nome do Projeto"> --> <!-- Opcional: Adicione seu nome/projeto -->
-
-    <!-- Link para o CSS -->
-    <!-- Garanta que o arquivo 'style.css' esteja na mesma pasta ou ajuste o caminho -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Favicon (Opcional mas recomendado) -->
-    <!-- Coloque um arquivo favicon.ico na raiz ou ajuste o href -->
-    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-    <!-- Considere adicionar outros tamanhos/formatos para diferentes dispositivos -->
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desbloquear PDFs</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Desbloqueador de PDF Online</h1>
-        <p>Remova a senha de arquivos PDF diretamente no seu navegador. Seus arquivos não são enviados para nenhum servidor.</p>
-
-        <div class="form-group">
-            <label for="pdfFiles">1. Selecione o(s) PDF(s) Criptografado(s):</label>
-            <input type="file" id="pdfFiles" accept=".pdf" multiple>
-        </div>
-
-        <div class="form-group">
-            <label for="pdfPassword">2. Digite a Senha (para TODOS os PDFs selecionados):</label>
-            <input type="password" id="pdfPassword" placeholder="Senha única para todos os PDFs">
-        </div>
-
-        <button id="unlockButton">Desbloquear PDFs</button>
-
-        <div id="status" role="status" aria-live="polite"> <!-- Adicionado role e aria-live para acessibilidade -->
-            <p>Pronto para começar.</p>
-            <!-- Área para logs detalhados -->
-            <ul id="logMessages"></ul>
-            <progress id="progressBar" value="0" max="100" style="display: none; width: 100%;" aria-label="Progresso do desbloqueio"></progress> <!-- Adicionado aria-label -->
-        </div>
+  <div class="container">
+    <h1>Desbloquear PDFs</h1>
+    <input type="file" id="pdfInput" accept="application/pdf" multiple>
+    <div id="fileList"></div>
+    
+    <div class="password-container">
+      <input type="password" id="senha" placeholder="Senha" value="" />
+      <button onclick="savePassword()">Salvar Senha</button>
+      <button onclick="clearPassword()">Remover Senha</button>
     </div>
+    
+    <button onclick="desbloquearPDFs()">Desbloquear PDFs</button>
+  </div>
 
-    <!-- Scripts carregados no final e com 'defer' para melhor performance e execução na ordem correta -->
-    <!-- Garanta que os arquivos .js estejam na mesma pasta ou ajuste o caminho -->
-    <script defer src="pdf-lib.min.js"></script>
-    <script defer src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
